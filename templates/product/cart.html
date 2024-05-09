@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+||Cart
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-8 p-2">
+            {% if products %}
+            {% for product in products  %}
+            <div class="card mb-3" >
+                <div class="row g-0">
+                  <div class="col-md-2">
+                    <img src="{{product.image.url}}" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-name">{{product.name}}</h5>
+                      <p class="mb-0">Quantity:{{product.quantity}}</p>
+                      <p class="mb-0">Price:{{product.price}}</p>
+                      <a href="{% url 'product_details' product.id %}" class="btn btn-sm btn-outline-warning">Update</a>
+                      <a href="{% url 'remove_from_cart' product.id %}" class="btn btn-sm btn-outline-danger">Remove</a>
+
+
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            
+            {% endfor %}
+            {% else %}
+            <h4 class="text-center">Cart Is Empty</h4>
+            {% endif %}
+
+        </div>
+        <div class="col-md-4 p-2">
+          {% if total_price %}
+            <div class="card">
+                <div class="card-body">
+                   
+                        <h4>Total Price: Rs/- {{total_price}}</h4>
+                        <a href="{% url 'check_out' %}" class="btn btn-primary w-100">Check Out</a>
+                   
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

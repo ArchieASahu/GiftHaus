@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}
+    ||About US
+{% endblock  %}
+
+{% block content  %}
+<div class="container ">
+    <div class="row">
+        <p class=" display-5 about fst-italic">GiftHaus is an eCommerce website designed to attract the youth to enjoy their life through high quality products and services.We aim to provide high quality items,cosmetics,bags,toy and so many exciting products in affordable prices.People usually miss the best gifts and items because they are unaware and are unable find the best gifts in nearby stores or from other websites, but Gifthaus has everything  to find out or fill your buckets with.</p>
+    </div>
+    <div class="row">
+        <h1 class="fst-italic text-center text-decoration-underline">DO VISIT OUR OFFLINE STORES</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4 my-5">
+            <div class="card border" style="width: 18rem;height:21rem;">
+                <img src="{% static 'image/Gift-Shop-1.jpg' %}" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                  <p class="card-text"><strong>ADDRESS</strong><br>Rasulgarh Industrial Estate, Industrial Area Estate, Rasulgarh, Bhubaneswar, Odisha 751007</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-5">
+            <div class="card border" style="width: 18rem;height: 21rem;">
+                <img src="{% static 'image/gift-shop.jpg' %}" class="card-img-top img-fluid" alt="...">
+                <div class="card-body my-3">
+                  <p class="card-text"><strong>ADDRESS</strong><br>First floor-14, Oberoi Mall, Western Express Hwy, Goregaon, Mumbai, Maharashtra 400063</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 my-5">
+            <div class="card border" style="width: 18rem;height:21rem;">
+                <img src="{% static 'image/GIFT-SHOP17.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text"><strong>ADDRESS</strong><br>G 13,Growels Mall, Akurli Road, Off, Western Express Hwy, Kandivali East, Mumbai, Maharashtra 400101</p>
+                </div>
+            </div>
+        </div>
+        <div class="row my-2">
+            <h1 class="fst-italic text-center ">GET YOUR FRANCHISE RIGHT NOW</h1>
+        </div>
+    </div>
+</div>
+
+    
+
+ {% endblock content %}
+</body>
+</html>

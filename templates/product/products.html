@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    ||All Products
+{% endblock title %}
+
+{% block content %}
+<style>
+    .card {
+        border: none;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-img-top {
+        object-fit: scale-down;
+        max-height: 200px;
+    }
+
+    .card-text {
+        font-size: 16px;
+    }
+
+    .btn-buy {
+        background-color:rgb(255,0,2);
+        color: white;
+        border: none;
+    }
+
+    .btn-buy:hover {
+        background-color: #e23d0d;
+    }
+
+{% comment %}     
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .pagination a {
+        color: #ff5733;
+        font-size: 18px;
+        text-decoration: none;
+        margin: 0 10px;
+    } {% endcomment %}
+
+    {% comment %} .pagination .current-page {
+        font-weight: bold;
+    }
+
+    .pagination a:hover {
+        text-decoration: underline;
+    } {% endcomment %}
+
+   
+    .no-products-message {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-2">
+        {% include 'bar.html' %}
+    </div>
+    <div class="col-md-10">
+        <div class="container my-5">
+            {% if products %}
+            <div class="row">
+                {% for product in products  %}
+                <div class="col-md-2">
+                    <div class="card border-0 m-1">
+                        <img src="{{product.image.url}}" class="card-img-top" style="height:250px">
+                        <div class="card-body p-0">
+                            <h6 class="card-text" style="height:45px;">{{product.name}}</h6>
+                            <p class="my-1">{{product.price}}</p>
+                            <a href="{% url 'product_details' product.id %}" class="btn btn-sm btn-outline-danger w-100">Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <h3 class="text-center my-3">No Products available</h3>            
+            
+            
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

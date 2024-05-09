@@ -1,0 +1,228 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiftHaus {% block title %}{% endblock title %} </title>
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <style> 
+    .container{
+      max-width:1170px;
+      margin:auto;
+    }
+    .row{
+      display:flex;
+      flex-wrap:wrap;
+    }
+    {% comment %} .footer{
+      background-color:#24262b;
+      padding:70px;
+
+    } {% endcomment %}
+    {% comment %} .footer-col{
+      width:25%;
+      padding:0 15px;    
+    } {% endcomment %}
+    {% comment %} .footer-col h4 {
+      font-size:18px;
+      color:#ffffff;
+      text-transform:capitalize;
+      margin-bottom:30px;
+      font-weight:500;
+      position:relative;
+    }
+    .footer-col h4{
+      postion:absolute;
+    }
+    .footer-col ul li a{
+      font-size:18px;
+      text-transform:capitalize;
+      color:#ffffff;
+      text-decoration:none;
+      font-weight:300;
+      color:#bbbbbb;
+      display:block;
+      transition:all 0.3s ease;
+      }
+      .footer-col ul li a:hover{
+        color:#ffffff;
+        padding-left:8px;
+      }
+      .footer-col .social-links a{
+        display:inline-block;
+        height:40px;
+        width:40px;
+        background-color:rgba(255,255,255,0.2);
+        margin:0 10px 10px 0;
+        text-align:center;
+        line-height:40px;
+        border-radius:50%;
+        color:#ffffff;
+        transition:all 0.5s ease;
+      }
+      .footer-col .social-links a:hover{
+        color:#24262b;
+        background-color:#ffffff;
+
+      }
+      @media(max-width:713px){
+        .footer-col{
+          width:50%;
+          margin-bottom:30px;
+
+        }
+
+      }
+      @media(max-width:574px){
+        .footer-col{
+          width:50%;
+          margin-bottom:30px;
+
+        }
+        
+      } {% endcomment %}
+   </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-danger ">
+    <a class="navbar-brand mx-2 heading" href="#"><i>GiftHaus</i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     
+      <ul class="navbar-nav ms-auto ">
+        <form class="form-inline my-2 my-lg-0 d-flex" action="{% url 'search_results' %}" method="GET">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_query">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <li class="nav-item active ">
+          <a class="nav-link" href="{% url 'index' %}"><i class="fa-solid fa-house"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'aboutus' %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'all_products' %}">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'cart' %}">Cart</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome,{{user.first_name}}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'signout' %}">logout</a></li>
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'signin' %}">Sign In</a>
+        </li>
+        
+        {% endif %}
+
+        
+      </ul>
+      
+    </div>
+  </nav>
+   
+      {% block content %}{% endblock content %}
+      
+
+    {% comment %} <footer>
+        &copy; 2023 GiftHaus
+    </footer> {% endcomment %}
+
+  {% comment %} <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>contact us</h4>
+          <ul>
+            <li><a href="">Email:GiftHaus@gmail.com</a></li>
+            <li><a href="">Phone:+121 9876754747</a></li>
+            <li><a href="">Address:123 street bbsr patia</a></li>
+          </ul>
+          
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Contact</a></li>
+
+
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>follow us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </footer>   {% endcomment %}
+
+  <footer class="bg-dark">
+    <div class="container ">
+      <div class="row">
+        <div class="col-md-4 text-center"><p class="text-white"><u>Company</u></p>
+          <p class="text-white">About Us <br> Blog <br> Career <br> Contact Us</p>
+        </div>
+        <div class="col-md-4 text-center"><p class="text-white"> <u>Policies</u>
+        </p>
+          <p class="text-white">Privacy Policies <br>Terms of Use <br>Secure Posting <br>Copyright Policies</p>
+        </div>
+        <div class="col-md-4 text-center"><p class="text-white"><u>Help</u></p>
+        <p class="text-white"> Content <br>Management <br>Security <br> FAQ</p>
+        </div>
+      </div>
+    </div>
+    
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/facebook.png" alt="Facebook" width="32px" height="32px">
+      </li>
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/linkedin.png" alt="Linkedin" width="32px" height="32px">
+      </li>
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/youtube.png" alt="Youtube" width="32px" height="32px">
+      </li>
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/pinterest.png" alt="Pinterest" width="32px" height="32px">
+      </li>
+      <li class="list-inline-item">
+        <img src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/instagram.png" alt="Instagram" width="32px" height="32px">
+      </li>
+    </ul>
+    <p class="text-center text-white"> &copy; 2023 GiftHaus. All Rights Reserved</p>
+  </footer>
+    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+    {% block extrajs %}
+    
+    {% endblock extrajs %}
+    
+</body>
+</html>

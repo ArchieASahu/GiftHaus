@@ -1,0 +1,28 @@
+.carousel-item{
+    min-height: 450px;
+    max-height: 600px;
+}
+.about{
+
+    height: auto;
+    color:blue;
+    font-size: xx-large;
+}
+.success{
+    color:green;
+    font-weight: bold;
+    font-style: oblique;
+
+}
+
+.error{
+    color:red;
+    font-weight: 900px;
+    font-style:oblique;
+}
+.counter input{
+    width: 50px;
+    font-size: 20px;
+    text-align: center;
+
+}
